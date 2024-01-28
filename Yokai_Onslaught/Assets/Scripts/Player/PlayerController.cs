@@ -154,6 +154,7 @@ public class PlayerController : MonoBehaviour
     private bool IsWalled()
     {
         return Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
+
         
         
     }
@@ -166,7 +167,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("Wall_Latch", true);
             isWallSliding = true;
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
-            Debug.Log("WALL");
+            
         }
         else
         {

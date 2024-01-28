@@ -2,37 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class ItemCollector : MonoBehaviour
 {
-    public static ItemCollector Counter;
-    
-    [SerializeField] private Text FAVORESofTheGods;
-    
-    public GameObject FavoresGODS;
+    private int SEEDS = 0;
+
+    [SerializeField] private Text SEEDSText;
+
+    [SerializeField] private AudioSource collectionSoundEffect;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("SEED"))
         {
-            
-            
-            
-          
-            
-            
-            
-
-            FavoresGODS.SetActive(false);
-            Debug.Log("FAVORES COLLECTED");
-            
+            collectionSoundEffect.Play();
+            Destroy(collision.gameObject);
+            SEEDS++;
+            SEEDSText.text = "SEEDS: " + SEEDS;
         }
-        
-        
-    }
-    private void Update()
-    {
-        
     }
 }
