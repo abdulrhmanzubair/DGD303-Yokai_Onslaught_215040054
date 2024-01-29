@@ -17,9 +17,9 @@ GameObject:
   - component: {fileID: 7229888369864008681}
   - component: {fileID: 6096400717476003734}
   - component: {fileID: 5495107221032357677}
-  - component: {fileID: 4244660225954098296}
   - component: {fileID: 197762784257178739}
   - component: {fileID: 3365608757110584862}
+  - component: {fileID: 4382881490174222904}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -37,7 +37,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.63, y: -0.76744, z: 0}
-  m_LocalScale: {x: 0.62592286, y: 0.62592286, z: 0.62592286}
+  m_LocalScale: {x: 1.0241642, y: 1.0241642, z: 1.0241642}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1154041221255024372}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1804042982, guid: dfc1e0dc0db254341ae23a3148087368, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -184,13 +184,13 @@ MonoBehaviour:
   horizontal: 0
   jumpTime: 0.2
   speed: 8
-  Dashspeed: 25
-  jumpingPower: 5
+  Dashspeed: 20
+  jumpingPower: 7
   wallSlidingSpeed: 2
   wallJumpingTime: 0.2
   wallJumpingDuration: 0.4
-  wallJumpingPower: {x: 4, y: 8}
-  dashingPower: 25
+  wallJumpingPower: {x: 6, y: 12}
+  dashingPower: 20
   dashingTime: 0.2
   dashingCooldown: 1
   rb: {fileID: 5974747464148810661}
@@ -202,7 +202,6 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
-  tr: {fileID: 7229888369864008681}
 --- !u!114 &5721009779270354399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,21 +369,7 @@ MonoBehaviour:
   attackRange: 2
   enemies:
     serializedVersion: 2
-    m_Bits: 128
---- !u!114 &4244660225954098296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2502414175798481365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7869518346679f64bb3754fb12d5c34a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  deathEffect: {fileID: 0}
+    m_Bits: 640
 --- !u!114 &197762784257178739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,6 +384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SEEDSText: {fileID: 0}
   collectionSoundEffect: {fileID: 3365608757110584862}
+  nextLevelName: LEVEL 2
 --- !u!82 &3365608757110584862
 AudioSource:
   m_ObjectHideFlags: 0
@@ -495,6 +481,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4382881490174222904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2502414175798481365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e26f534ea637349a0bc6f44b578ba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 3
+  iFramesDuration: 1
+  numberOfFlashes: 1
+  components:
+  - {fileID: 5495107221032357677}
+  - {fileID: 3454646282748531829}
 --- !u!1 &2720494370033258334
 GameObject:
   m_ObjectHideFlags: 0

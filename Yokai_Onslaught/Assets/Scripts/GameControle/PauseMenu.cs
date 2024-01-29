@@ -73,15 +73,7 @@ public class PauseMenu : MonoBehaviour
         ;
         Debug.Log("Menu LOADED");
     }
-    public void LoadMAP()
-
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("Map");
-        
-        Debug.Log("MAP LOADED");
-    }
-
+   
     public void QuitGame()
     {
         Debug.Log("Quitting game...");

@@ -25,41 +25,31 @@ public class PlayerAttack : MonoBehaviour
         {
             if (Input.GetButton("Fire1"))
             {
-                
                 anim.SetBool("Is_attacking", true);
-                Collider2D[] damage = Physics2D.OverlapCircleAll(attackLocation.position, attackRange, enemies);
 
-                for (int i = 0; i < damage.Length; i++)
+                Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackLocation.position, attackRange, enemies);
+
+                foreach (Collider2D enemy in hitEnemies)
                 {
-                    Destroy(damage[i].gameObject);
+                    // Instead of destroying, set the enemy inactive
+                    enemy.gameObject.SetActive(false);
                 }
-
 
                 Debug.Log("ATTACK!");
             }
             
-
-           
             attackTime = startTimeAttack;
-            
         }
         else
         {
             attackTime -= Time.deltaTime;
             anim.SetBool("Is_attacking", false);
-            
         }
-
-       
     }
 
-   
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackLocation.position, attackRange);
     }
-
-  
-
 }

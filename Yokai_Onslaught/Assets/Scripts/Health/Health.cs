@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -33,13 +34,14 @@ public class Health : MonoBehaviour
         {
             anim.SetTrigger("hurt");
             StartCoroutine(Invunerability());
+            
         }
         else
         {
             if (!dead)
             {
                 anim.SetTrigger("die");
-
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 //Deactivate all attached component classes
                 foreach (Behaviour component in components)
                     component.enabled = false;

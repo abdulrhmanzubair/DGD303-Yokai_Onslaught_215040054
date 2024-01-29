@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
-    [SerializeField] private TrailRenderer tr;
+   
 
 
     void Start()
@@ -237,9 +237,9 @@ public class PlayerController : MonoBehaviour
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
-        tr.emitting = true;
+       
         yield return new WaitForSeconds(dashingTime);
-        tr.emitting = false;
+        
         rb.gravityScale = originalGravity;
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
