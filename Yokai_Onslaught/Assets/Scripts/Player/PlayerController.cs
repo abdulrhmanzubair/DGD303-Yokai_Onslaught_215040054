@@ -1,3 +1,4 @@
+
 using System.Collections;
 using UnityEngine;
 
@@ -36,7 +37,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
-   
+
 
 
     void Start()
@@ -53,9 +54,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        
+
         horizontal = Input.GetAxisRaw("Horizontal");
-        
+
         anim.SetFloat("RunSpeed", Mathf.Abs(horizontal));
 
 
@@ -65,7 +66,7 @@ public class PlayerController : MonoBehaviour
             Jump();
             Debug.Log("JUMP!");
             anim.SetBool("Jump", true);
-           
+
         }
         if (Input.GetButton("Jump") && jumpTimeCounter > 0)
         {
@@ -102,7 +103,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             anim.SetBool("Jump", true);
         }
-        
+
         //Dash
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
@@ -110,12 +111,13 @@ public class PlayerController : MonoBehaviour
             dashTimeCounter -= Time.deltaTime;
             StartCoroutine(Dash());
         }
-        else{
+        else
+        {
             anim.SetBool("Dash", false);
 
         }
 
-       
+
 
         WallSlide();
         WallJump();
@@ -139,42 +141,42 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        
+
     }
 
-   
+
 
 
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-        
+
     }
 
     private bool IsWalled()
     {
         return Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
 
-        
-        
+
+
     }
 
     private void WallSlide()
     {
         if (IsWalled() && !IsGrounded() && horizontal != 0f)
         {
-             anim.SetBool("Jump", false);
+            anim.SetBool("Jump", false);
             anim.SetBool("Wall_Latch", true);
             isWallSliding = true;
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
-            
+
         }
         else
         {
             isWallSliding = false;
             anim.SetBool("Wall_Latch", false);
         }
-        
+
     }
 
     private void WallJump()
@@ -237,9 +239,9 @@ public class PlayerController : MonoBehaviour
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
-       
+
         yield return new WaitForSeconds(dashingTime);
-        
+
         rb.gravityScale = originalGravity;
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
@@ -248,5 +250,5 @@ public class PlayerController : MonoBehaviour
         Debug.Log("DASH!");
     }
 
-  
+
 }

@@ -37,6 +37,8 @@ public class PlayerAttack : MonoBehaviour
 
                 Debug.Log("ATTACK!");
             }
+
+
             
             attackTime = startTimeAttack;
         }
